@@ -27,4 +27,11 @@ steps:
   inputs:
     targetPath: '$(Build.ArtifactStagingDirectory)' 
     artifactName: 'myWebsiteName'
-
+- task: AzureWebApp@1
+  displayName: 'Azure Web App Deploy'
+  inputs:
+    azureSubscription: 'BizSpark (19b193e8-abf1-49a2-9d8c-ebe408d77229)'
+    appType: 'webAppLinux'
+    appName: 'testdeployment02'
+    package: '$(System.ArtifactsDirectory)/**/*.zip'
+    runtimeStack: 'DOTNETCORE|5.0'
